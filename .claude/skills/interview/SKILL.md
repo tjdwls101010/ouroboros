@@ -67,6 +67,10 @@ If the user does not know an answer, do not force a guess. Determine whether res
 
 Every user-facing question must use `AskUserQuestion`, including the opening brief, clarifications, value choices, review-lane approval, plan revision, artifact path, collision handling, mode changes, and final approval. Ordinary conversation is for findings, reasoning, recommendations, and summaries; do not bury a question in prose.
 
+Optimize for the user's total effort across planning, implementation, and correction, not for the visible number of `AskUserQuestion` calls. One well-framed answer is a small, immediate cost; a guessed direction can propagate through the plan into implemented work, where correcting it requires new decisions, discarded artifacts, rework, rollback, and lost time. Never close a direction-changing uncertainty by guessing solely because another question might feel annoying.
+
+This asymmetry does not justify interrogation. After the opening brief, before each question, exhaust available research, name the downstream decision the answer will change, offer an evidence-backed recommendation, and ask before dependent choices accumulate. Skip the question when its answer cannot change the plan, can be established from evidence, or can be deferred without invalidating work. The target is fewer low-value questions, not fewer necessary ones.
+
 Ask one consequential decision per call by default. Combine decisions only when they are genuinely coupled and splitting them would make either answer misleading. A long batch makes it impossible to adapt later questions to earlier answers and conceals dependencies.
 
 Offer only substantive alternatives. Each option must say what changes downstream, not merely restate its label. When evidence supports a recommendation, put it first, mark its label with the user's-language equivalent of “(Recommended),” and explain the reason and tradeoff. Preserve a free-input route so the user can reject the offered frame; never invent dummy options to fill a menu.
